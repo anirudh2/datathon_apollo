@@ -4,7 +4,6 @@ import random
 import os
 import argparse
 
-from tqdm import tqdm
 import pdb
 
 # Create parser and add an argument to specify which directory the data is in
@@ -29,12 +28,16 @@ if __name__ == '__main__':
     A = []
     for i in range(2,array_size[0]):
         if int(full_array[i,2]) == 0:
-            for col in args.columns_to_read:
+            for col_num in range(len(args.columns_to_read)):
+                col = args.columns_to_read[col_num]
                 temp_str = full_array[i,col]
                 temp = float(temp_str.replace(',',''))
                 if i == 2:
-                    if col == arg.columns_to_read[0]:
-                        A.append([])
+                    A.append([temp])
+                else:
+                    A[col_num].append(temp)
+
+
                 # A.append(temp)
                 pdb.set_trace()
 
