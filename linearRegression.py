@@ -11,7 +11,8 @@ from pylab import plot,show
 import pdb
 import util
 
-gen_func = util.generate_A_and_b()
+#gen_func = util.generate_A_and_b()
+gen_func = util.generate_A_census()
 A, y = gen_func.generate() # Make A, b once we figure out what file we want to use for b
 #pdb.set_trace()
 
