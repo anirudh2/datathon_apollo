@@ -73,26 +73,27 @@ def main(args):
     else:
         print('else')
         for i in range(0,array_size[0]):
-            for col_num in range(len(all_columns)):
-                col = all_columns[col_num]
-                if (type(full_array[i,col]) is str):
-                    temp_str = full_array[i,col]
-                    # The data has commas. Remove to cast to float
-                    try:
-                        temp = float(temp_str.replace(',',''))
-                    except AttributeError:
-                        print('Trying to use replace on temp_str when it is not a str')
-                        pdb.set_trace()
-                else:
-                    temp = float(full_array[i,col])
-                # Make a new row in our A matrix if we are in the first entry
-                # Else add to existing rows
-                # pdb.set_trace()
-                if not A or (i == first_data_ix):
-                    A.append([temp])
-                    first_data_ix = i
-                else:
-                    A[col_num].append(temp)
+            if i != 9:
+                for col_num in range(len(all_columns)):
+                    col = all_columns[col_num]
+                    if (type(full_array[i,col]) is str):
+                        temp_str = full_array[i,col]
+                        # The data has commas. Remove to cast to float
+                        try:
+                            temp = float(temp_str.replace(',',''))
+                        except AttributeError:
+                            print('Trying to use replace on temp_str when it is not a str')
+                            pdb.set_trace()
+                    else:
+                        temp = float(full_array[i,col])
+                    # Make a new row in our A matrix if we are in the first entry
+                    # Else add to existing rows
+                    # pdb.set_trace()
+                    if not A or (i == first_data_ix):
+                        A.append([temp])
+                        first_data_ix = i
+                    else:
+                        A[col_num].append(temp)
 
     # pdb.set_trace()
     return A
