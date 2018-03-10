@@ -19,7 +19,7 @@ class generate_A_and_b():
         num_cols_per_file = [2]
         A = []
         for file_num in range(len(files_to_read)):
-            args = parser.parse_args(['--filename',files_to_read[file_num],'--columns_to_read',cols_per_file_to_read[file_num]])
+            args = parser.parse_args(['--filename',files_to_read[file_num],'--columns_to_read',cols_per_file_to_read[file_num],'--is_b_vec','False'])
             A_new = build_dataset.main(args)
             num_cols = num_cols_per_file[file_num]
             if file_num == 0:
@@ -32,8 +32,8 @@ class generate_A_and_b():
 
         # This gives us the full b-vector
 
-        args = parser.parse_args(['--filename','data/Number-and-age-adjusted-rates-of-drug-overdose-deaths-by-state-US-2016.xlsx','--columns_to_read','[3]']) #see cols_per_file_to_read
-        b = build_dataset.main(args)
+        args = parser.parse_args(['--filename','data/Number-and-age-adjusted-rates-of-drug-overdose-deaths-by-state-US-2016.xlsx','--columns_to_read','[3]','--is_b_vec','True']) #see cols_per_file_to_read
+        y = build_dataset.main(args)
 
-        pdb.set_trace()
-        return A, b
+        # pdb.set_trace()
+        return A, y

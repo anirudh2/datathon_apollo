@@ -12,11 +12,11 @@ import pdb
 import util
 
 gen_func = util.generate_A_and_b()
-A, b = gen_func.generate() # Make A, b once we figure out what file we want to use for b
-pdb.set_trace()
+A, y = gen_func.generate() # Make A, b once we figure out what file we want to use for b
+# pdb.set_trace()
 
 A_mat = array([np.asarray(A), ones(50)])
-# w = linalg.lstsq(A_mat,b)[0] # Don't need to transpose A. Also, why are we taking the value at 0?
+w = linalg.lstsq(A_mat,y)[0] # Don't need to transpose A. Also, why are we taking the value at 0?
 
 
 # xi = arange(0,9)
