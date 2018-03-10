@@ -32,8 +32,8 @@ class generate_A_and_b():
 
         # This gives us the full b-vector
 
-        # args = parser.parse_args(['--filename',B_VEC_FILE_NAME,'--columns_to_read',B_VEC_COL_NUM_AS_A_STRING_LIST) #see cols_per_file_to_read
-        # b = build_dataset.main(args)
+        args = parser.parse_args(['--filename','data/Number-and-age-adjusted-rates-of-drug-overdose-deaths-by-state-US-2016.xlsx','--columns_to_read','[3]']) #see cols_per_file_to_read
+        b = build_dataset.main(args)
 
-        # pdb.set_trace()
-        return A#, b
+        pdb.set_trace()
+        return A, b

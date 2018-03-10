@@ -30,8 +30,9 @@ def main(args):
     filename = args.filename
     all_columns = ast.literal_eval(args.columns_to_read)
     # Read data from speadsheet
-    if filename.endswith('.xls'):
+    if filename.endswith('.xls') or filename.endswith('.xlsx'):
         df = pd.read_excel(filename)
+        pdb.set_trace()
     elif filename.endswith('.csv'):
         df = pd.read_csv(filename)
 
