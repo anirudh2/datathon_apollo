@@ -32,7 +32,7 @@ class generate_A_and_b():
 
         # This gives us the full b-vector
 
-        args = parser.parse_args(['--filename','data/Number-and-age-adjusted-rates-of-drug-overdose-deaths-by-state-US-2016.xlsx','--columns_to_read','[3]','--is_b_vec','True']) #see cols_per_file_to_read
+        args = parser.parse_args(['--filename','data/Number-and-age-adjusted-rates-of-drug-overdose-deaths-by-state-US-2016.csv','--columns_to_read','[3]','--is_b_vec','True']) #see cols_per_file_to_read
         y = build_dataset.main(args)
 
         # pdb.set_trace()
