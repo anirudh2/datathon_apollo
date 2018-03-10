@@ -4,6 +4,7 @@ import random
 import os
 import argparse
 import sys
+import ast
 
 import pdb
 
@@ -19,15 +20,15 @@ def parse_args():
     # Create parser and add an argument to specify which directory the data is in
     parser = argparse.ArgumentParser(description="")
     parser.add_argument('-f','--filename', default='data/2017CHR_CSV_Analytic_Data.csv',help="Dataset spreadsheet", required=False)
-    parser.add_argument('-c','--columns_to_read', default=[6, 21],help="Which columns to read from the spreadsheet", required=False)
+    parser.add_argument('-c','--columns_to_read', default='[6, 21]',help="Which columns to read from the spreadsheet", required=False)
     return parser
 
 def main(args):
     # Check if dataset is where we expect it to be
+    # pdb.set_trace()
     assert os.path.isfile(args.filename), "Couldn't find the dataset at {}".format(args.filename)
-    pdb.set_trace()
     filename = args.filename
-
+    all_columns = ast.literal_eval(args.columns_to_read)
     # Read data from speadsheet
     if filename.endswith('.xls'):
         df = pd.read_excel(filename)
@@ -47,8 +48,8 @@ def main(args):
             # if the 3rd column (country code) is 0, we are looking at a number for a
             # state. This is what we want. Is this the case in other datasets?
             if int(full_array[i,2]) == 0:
-                for col_num in range(len(args.columns_to_read)):
-                    col = args.columns_to_read[col_num]
+                for col_num in range(len(all_columns)):
+                    col = all_columns[col_num]
                     # Check if the data is a string. If not, write directly to temp (assumes a float)
                     if (type(full_array[i,col]) is str):
                         temp_str = full_array[i,col]
@@ -68,6 +69,9 @@ def main(args):
                     else:
                         A[col_num].append(temp)
 
+    pdb.set_trace()
+
+    
 if __name__ == '__main__':
     parser = parse_args()
     args = parser.parse_args()

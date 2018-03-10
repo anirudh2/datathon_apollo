@@ -13,7 +13,7 @@ import build_dataset
 
 parser = build_dataset.parse_args()
 # pdb.set_trace()
-args = parser.parse_args(['-f','data/','-c',[1,2,3]])
+args = parser.parse_args([])
 build_dataset.main(args)
 # xi = arange(0,9)
 # A = array([ xi, ones(9)])
