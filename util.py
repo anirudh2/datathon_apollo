@@ -15,7 +15,7 @@ class generate_A_and_b():
 
         # This gives us the full A matrix
         files_to_read = ['data/2017CHR_CSV_Analytic_Data.csv']
-        cols_per_file_to_read = ['[6, 21]']
+        cols_per_file_to_read = ['[21, 56, 99]']
         num_cols_per_file = [2]
         A = []
         for file_num in range(len(files_to_read)):
