@@ -3,13 +3,10 @@ import numpy as np
 import random
 import os
 import argparse
+import sys
 
 import pdb
 
-# Create parser and add an argument to specify which directory the data is in
-parser = argparse.ArgumentParser()
-parser.add_argument('--filename', default='data/2017CHR_CSV_Analytic_Data.csv',help="Dataset spreadsheet")
-parser.add_argument('--columns_to_read', default=[6, 21],help="Which columns to read from the spreadsheet")
 
 # Check if a string represents an int
 def repsInt(test_str):
@@ -19,7 +16,12 @@ def repsInt(test_str):
     except ValueError:
         return False
 
-if __name__ == '__main__':
+def main(args):
+    # Create parser and add an argument to specify which directory the data is in
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--filename', default='data/2017CHR_CSV_Analytic_Data.csv',help="Dataset spreadsheet")
+    parser.add_argument('--columns_to_read', default=[6, 21],help="Which columns to read from the spreadsheet")
+
     args = parser.parse_args()
 
     # Check if dataset is where we expect it to be
@@ -65,3 +67,6 @@ if __name__ == '__main__':
                         first_data_ix = i
                     else:
                         A[col_num].append(temp)
+
+if __name__ == '__main__':
+    main(sys.argv[1:])

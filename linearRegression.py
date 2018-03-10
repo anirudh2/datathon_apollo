@@ -8,6 +8,8 @@ Created on Fri Mar  9 23:44:35 2018
 from numpy import arange,array,ones,linalg
 from pylab import plot,show
 
+import build_dataset
+
 xi = arange(0,9)
 A = array([ xi, ones(9)])
 # linearly generated sequence
