@@ -7,14 +7,14 @@ Created on Fri Mar  9 23:44:35 2018
 
 from numpy import arange,array,ones,linalg
 from pylab import plot,show
-
 import pdb
-import build_dataset
+import util
 
-parser = build_dataset.parse_args()
+gen_func = util.generate_A_and_b()
+A = gen_func.generate() # Make A, b once we figure out what file we want to use for b
 # pdb.set_trace()
-args = parser.parse_args([])
-build_dataset.main(args)
+
+
 # xi = arange(0,9)
 # A = array([ xi, ones(9)])
 # # linearly generated sequence

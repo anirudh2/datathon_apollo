@@ -69,9 +69,10 @@ def main(args):
                     else:
                         A[col_num].append(temp)
 
-    pdb.set_trace()
+    # pdb.set_trace()
+    return A
 
-    
+
 if __name__ == '__main__':
     parser = parse_args()
     args = parser.parse_args()

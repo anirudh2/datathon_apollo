@@ -7,14 +7,20 @@ Created on Sat Mar 10 00:24:02 2018
 
 from numpy import *
 import pylab
+import pdb
+import util
+
+gen_func = util.generate_A_and_b()
+A = gen_func.generate() # Make A, b once we figure out what file we want to use for b
+# pdb.set_trace()
 
 # data to fit
 x = random.rand(6)
 y = random.rand(6)
 
 # fit the data with a 4th degree polynomial
-z4 = polyfit(x, y, 4) 
-p4 = poly1d(z4) # construct the polynomial 
+z4 = polyfit(x, y, 4)
+p4 = poly1d(z4) # construct the polynomial
 
 z5 = polyfit(x, y, 5)
 p5 = poly1d(z5)
