@@ -15,19 +15,19 @@ def repsInt(test_str):
         return True
     except ValueError:
         return False
+def parse_args():
+    # Create parser and add an argument to specify which directory the data is in
+    parser = argparse.ArgumentParser(description="")
+    parser.add_argument('-f','--filename', default='data/2017CHR_CSV_Analytic_Data.csv',help="Dataset spreadsheet", required=False)
+    parser.add_argument('-c','--columns_to_read', default=[6, 21],help="Which columns to read from the spreadsheet", required=False)
+    return parser
 
 def main(args):
-    # Create parser and add an argument to specify which directory the data is in
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--filename', default='data/2017CHR_CSV_Analytic_Data.csv',help="Dataset spreadsheet")
-    parser.add_argument('--columns_to_read', default=[6, 21],help="Which columns to read from the spreadsheet")
-
-    args = parser.parse_args()
-
     # Check if dataset is where we expect it to be
     assert os.path.isfile(args.filename), "Couldn't find the dataset at {}".format(args.filename)
-
+    pdb.set_trace()
     filename = args.filename
+
     # Read data from speadsheet
     if filename.endswith('.xls'):
         df = pd.read_excel(filename)
@@ -69,4 +69,7 @@ def main(args):
                         A[col_num].append(temp)
 
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    parser = parse_args()
+    args = parser.parse_args()
+
+    main(args)
