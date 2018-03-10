@@ -15,7 +15,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # Check if dataset is where we expect it to be
-    assert os.path.isdir(args.filename), "Couldn't find the dataset at {}".format(args.filename)
+    assert os.path.isfile(args.filename), "Couldn't find the dataset at {}".format(args.filename)
 
     filename = args.filename
     # Read data from speadsheet
@@ -30,8 +30,11 @@ if __name__ == '__main__':
     for i in range(2,array_size[0]):
         if int(full_array[i,2]) == 0:
             for col in args.columns_to_read:
-                temp_str = full_array[i.col]
+                temp_str = full_array[i,col]
                 temp = float(temp_str.replace(',',''))
+                if i == 2:
+                    if col == arg.columns_to_read[0]:
+                        A.append([])
                 # A.append(temp)
                 pdb.set_trace()
 
