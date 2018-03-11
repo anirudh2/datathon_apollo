@@ -82,7 +82,6 @@ def main(args):
     else:
         print('else')
         for i in range(0,array_size[0]):
-            if i != 9:
                 for col_num in range(len(all_columns)):
                     col = all_columns[col_num]
                     if (type(full_array[i,col]) is str):

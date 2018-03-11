@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 #gen_func = util.generate_A_and_b()
 gen_func = util.generate_A_census()
-A = gen_func.generate() 
+A, y = gen_func.generate() 
 
 A = np.asarray(A)
 A_oneVect = np.sum(A,1)
@@ -24,5 +24,5 @@ plt.title("Histogram")
 plt.xlabel("Housing")
 plt.ylabel("Frequency")
 
-fig = plt.gcf()
+
 

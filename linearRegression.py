@@ -20,7 +20,7 @@ A = np.asarray(A)
 #A_oneP = A[0] 
 #A_mat = array([A.T, ones(50)])
 #y_oneP = y[0]
-ones_vec = np.ones((1,50))
+ones_vec = np.ones((1,51))
 A_mat = np.r_[A,ones_vec]
 w = linalg.lstsq(A_mat.T,y[0])[0] # Don't need to transpose A. Also, why are we taking the value at 0?
 
