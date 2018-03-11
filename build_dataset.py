@@ -5,6 +5,7 @@ import os
 import argparse
 import sys
 import ast
+import math
 
 import pdb
 
@@ -49,7 +50,8 @@ def main(args):
 
                     # if the 3rd column (country code) is 0, we are looking at a number for a
                     # state. This is what we want. Is this the case in other datasets?
-                    if int(full_array[i,2]) == 0:
+#                    if int(full_array[i,2]) == 0:
+#                    if math.isnan(float(full_array[i,2])):
                         for col_num in range(len(all_columns)):
                             col = all_columns[col_num]
                             # Check if the data is a string. If not, write directly to temp (assumes a float)
@@ -70,10 +72,12 @@ def main(args):
                                 first_data_ix = i
                             else:
                                 A[col_num].append(temp)
+#                    else: 
+#                        A[col_num] = 0
     else:
         print('else')
         for i in range(0,array_size[0]):
-            if i != 9:
+#            if i != 9:
                 for col_num in range(len(all_columns)):
                     col = all_columns[col_num]
                     if (type(full_array[i,col]) is str):

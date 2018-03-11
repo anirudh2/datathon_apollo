@@ -16,7 +16,11 @@ class generate_A_and_b():
 
         # This gives us the full A matrix
         files_to_read = ['data/2017CHR_CSV_Analytic_Data.csv']
-        cols_per_file_to_read = ['[21, 56, 99]']
+        cols_per_file_to_read = ['[  6, 11, 16, 21, 26, 31, 36, 41, 46, 51, 56, 61, 66, 71,  76, 81,\
+                                   87,  93,  99, 104, 109, 114, 119, 124, 129, 134, 139, 144, 149, \
+                                   154, 159, 164, 169, 174, 179, 184, 189, 194, 199, 204, 209, 214, \
+                                   219, 224, 234, 239, 244, 249, 254, 259, 265, 270, 275, 280, 285, \
+                                   290, 295, 302, 307, 311, 316, 321, 326, 331, 336, 341, 346, 351]']
         num_cols_per_file = [2]
         A = []
         for file_num in range(len(files_to_read)):
@@ -33,7 +37,7 @@ class generate_A_and_b():
 
         # This gives us the full b-vector
 
-        args = parser.parse_args(['--filename','data/Number-and-age-adjusted-rates-of-drug-overdose-deaths-by-state-US-2016.csv','--columns_to_read','[3]','--is_b_vec','True']) #see cols_per_file_to_read
+        args = parser.parse_args(['--filename','data/2017CHR_CSV_Analytic_Data.csv','--columns_to_read','[229]','--is_b_vec','False']) #see cols_per_file_to_read
         y = build_dataset.main(args)
 
         # pdb.set_trace()
