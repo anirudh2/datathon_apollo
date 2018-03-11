@@ -1,6 +1,7 @@
 import pdb
 import build_dataset
 import build_dataset_census
+import build_dataset_overdose
 
 class generate_A_and_b():
 
@@ -38,7 +39,7 @@ class generate_A_and_b():
         # pdb.set_trace()
         return A, y
 
-class generate_A_census():
+class generate_A_census_timeSer():
 
     def __init__(self):
         self.parser = build_dataset_census.parse_args()
@@ -67,8 +68,9 @@ class generate_A_census():
 
         # This gives us the full b-vector
 
-        args = parser.parse_args(['--filename','data/Number-and-age-adjusted-rates-of-drug-overdose-deaths-by-state-US-2016.csv','--columns_to_read','[3]','--is_b_vec','True']) #see cols_per_file_to_read
-        y = build_dataset.main(args)
+        work_sheet_to_read = ['online']
+        args = parser.parse_args(['--filename','data/overdose_data_1999-2015.xlsx','--columns_to_read','[3, 4, 5, 6, 7, 8, 9, 10, 11, 12]','--is_b_vec','True','--work_sheet_to_read',work_sheet_to_read[file_num]]) #see cols_per_file_to_read
+        y = build_dataset_overdose.main(args)
 
         # pdb.set_trace()
         return A, y

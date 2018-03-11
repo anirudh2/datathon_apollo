@@ -7,29 +7,44 @@ Created on Fri Mar  9 23:44:35 2018
 
 import numpy as np
 from numpy import arange,array,ones,linalg
-from pylab import plot,show
+#from pylab import plot,show
 import pdb
 import util
+import matplotlib.pyplot as plt
+from sklearn.metrics import r2_score
 
 #gen_func = util.generate_A_and_b()
-gen_func = util.generate_A_census()
+gen_func = util.generate_A_census_timeSer()
 A, y = gen_func.generate() # Make A, b once we figure out what file we want to use for b
 #pdb.set_trace()
 
 A = np.asarray(A)
-#A_oneP = A[0] 
-#A_mat = array([A.T, ones(50)])
-#y_oneP = y[0]
-ones_vec = np.ones((1,51))
-A_mat = np.r_[A,ones_vec]
-w = linalg.lstsq(A_mat.T,y[0])[0] # Don't need to transpose A. Also, why are we taking the value at 0?
+A_oneVect = np.sum(A,1)
+ones_vec = np.ones((10,1))
+A_mat = np.c_[A_oneVect,ones_vec]
+A_mat = A_mat.T;
+
+#A = np.asarray(A)
+#ones_vec = np.ones((1,50))
+#A_mat = np.r_[A,ones_vec]
+
+y0 = [tmp[0] for tmp in y]
+w= linalg.lstsq(A_mat.T,y0)[0] # Don't need to transpose A. Also, why are we taking the value at 0?
 
 # plotting the line
 line = np.matmul(A_mat.T, w) # regression line
-plot(y[0],line,'o')#,A_mat.T,y[0],'o')
-print(w)
-show()
+r2_scr = r2_score(y0, line)
 
+plt.plot(A_oneVect,line,'r-',A_oneVect,y0,'o')
+plt.xlabel('Total Overdose Deaths')
+plt.ylabel('Civilian labor force')
+plt.show()
+print(w)
+print(r2_scr)
+
+plt.plot(y0,line,'bo-', [17500, 37500],[17500, 37500],'r-')
+plt.xlabel('True')
+plt.ylabel('Predicted')
 
 #xi = arange(0,9)
 #C = array([ xi, ones(9)])

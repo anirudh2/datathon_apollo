@@ -10,13 +10,14 @@ import pylab
 import pdb
 import util
 
-gen_func = util.generate_A_and_b()
-A = gen_func.generate() # Make A, b once we figure out what file we want to use for b
-# pdb.set_trace()
 
 # data to fit
-x = random.rand(6)
-y = random.rand(6)
+gen_func = util.generate_A_and_b()
+A, y = gen_func.generate() # Make A, b once we figure out what file we want to use for b
+
+A = asarray(A)
+x = A
+#pdb.set_trace()
 
 # fit the data with a 4th degree polynomial
 z4 = polyfit(x, y, 4)
